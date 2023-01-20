@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab3_sem3_test", "Lab3_sem3_test.vcxproj", "{4C5394F4-EE60-4536-B8F5-4728C8F15B79}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphUnitTest", "GraphUnitTest\GraphUnitTest.vcxproj", "{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{4C5394F4-EE60-4536-B8F5-4728C8F15B79}.Release|x64.Build.0 = Release|x64
 		{4C5394F4-EE60-4536-B8F5-4728C8F15B79}.Release|x86.ActiveCfg = Release|Win32
 		{4C5394F4-EE60-4536-B8F5-4728C8F15B79}.Release|x86.Build.0 = Release|Win32
+		{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}.Debug|x64.ActiveCfg = Debug|x64
+		{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}.Debug|x64.Build.0 = Debug|x64
+		{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}.Debug|x86.ActiveCfg = Debug|Win32
+		{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}.Debug|x86.Build.0 = Debug|Win32
+		{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}.Release|x64.ActiveCfg = Release|x64
+		{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}.Release|x64.Build.0 = Release|x64
+		{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}.Release|x86.ActiveCfg = Release|Win32
+		{020D6E16-0CE2-49CF-9039-AA51CE9C12BC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
