@@ -18,6 +18,7 @@ protected:
 	struct Vertex {
 		TV value = TV();
 		size_t id = 0;
+
 		Vertex() {}
 		Vertex(size_t _id, const TV& _value) {
 			value = _value;
@@ -27,12 +28,6 @@ protected:
 			value = another.value;
 			id = another.id;
 		}
-		//Vertex(Vertex&& another) {
-		//	value = another.value;
-		//	id = another.id;
-		//	another.value = TV();
-		//	another.id = 0;
-		//}
 		Vertex& operator=(const Vertex& another) {
 			value = another.value;
 			id = another.id;
@@ -49,6 +44,7 @@ protected:
 			return !(*this == v);
 		}
 	};
+
 	struct Edge {
 		TE value = TE();
 		size_t id_from = 0;
@@ -104,6 +100,7 @@ public:
 	private:
 		std::list<Edge> seq;
         size_t _size = 0;
+
 	public:
 		Path() = default;
 		Path(const Path& another) {
