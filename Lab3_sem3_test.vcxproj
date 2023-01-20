@@ -129,11 +129,6 @@
   <ItemGroup>
     <ClCompile Include="C:\Users\alesh\Downloads\Telegram Desktop\sup.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="C:\Users\alesh\Downloads\Telegram Desktop\Graph (2).h" />
-    <ClInclude Include="C:\Users\alesh\Downloads\Telegram Desktop\Pair (2).h" />
-    <ClInclude Include="C:\Users\alesh\Downloads\Telegram Desktop\sup.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
