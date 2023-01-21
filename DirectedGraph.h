@@ -98,7 +98,7 @@ private:
 		return res;
 	}
 public:
-	void DirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value = TE()) 
+	void erase_edge(size_t from, size_t to, TE _value = TE()) 
 	{
 		if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end()) 
 		{

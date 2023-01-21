@@ -54,18 +54,24 @@ struct pair_hash {
 	}
 };
 template <typename T>
-struct pair_unord_equal {
-	bool operator()(const Pair<T, T>& p1, const Pair<T, T>& p2) const {
-        if ((p1.first == p2.first && p1.second == p2.second) || (p1.first == p2.second && p1.second == p2.first)) {
+struct pair_unord_equal 
+{
+	bool operator()(const Pair<T, T>& p1, const Pair<T, T>& p2) const 
+	{
+        if ((p1.first == p2.first && p1.second == p2.second) || (p1.first == p2.second && p1.second == p2.first)) 
+		{
 			return true;
 		}
 		return false;
 	}
 };
 template <typename T>
-struct pair_ord_equal {
-	bool operator()(const Pair<T, T>& p1, const Pair<T, T>& p2) const {
-		if (p1.first == p2.first && p1.second == p2.second) {
+struct pair_ord_equal 
+{
+	bool operator()(const Pair<T, T>& p1, const Pair<T, T>& p2) const 
+	{
+		if (p1.first == p2.first && p1.second == p2.second) 
+		{
 			return true;
 		}
 		return false;

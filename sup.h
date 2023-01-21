@@ -4,15 +4,19 @@
 #include <string>
 
 template <typename T>
-struct sup {
-    T operator()() {
+struct sup 
+{
+    T operator()() 
+    {
         return std::numeric_limits<int>::max();
     }
 };
 
 template<>
-struct sup<std::string> {
-    std::string operator() () {
+struct sup<std::string> 
+{
+    std::string operator() () 
+    {
         std::string s = "~~~~~~";
         return s;
     }

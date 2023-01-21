@@ -9,8 +9,9 @@ private:
 	{
 		Path path;
 		std::queue<size_t> q;
-		std::unordered_map<size_t, bool> checked(Graph<TV, TE>::vertex_count);
-		std::unordered_map<size_t, size_t> parents(Graph<TV, TE>::vertex_count);
+		std::unordered_map<size_t, bool> checked(Graph<TV, TE>::vertexes.size());
+		std::unordered_map<size_t, size_t> parents(Graph<TV, TE>::vertexes.size());
+
 		q.push(from);
 		parents[from] = 0;
 		checked[from] = true;
@@ -38,10 +39,12 @@ private:
 				}
 			}
 		}
+
 		if (checked.find(to) == checked.end()) 
 		{
 			return path;
 		}
+
 		size_t child = to;
 		size_t cur_parent = parents[child];
 		while (cur_parent != 0) 
@@ -68,26 +71,29 @@ private:
 		std::unordered_map<size_t, TE> dist;
 		std::unordered_map<size_t, size_t> parents;
 		std::unordered_map<Pair<size_t, size_t>, TE, pair_hash<size_t>, pair_unord_equal<size_t>> edges;
-		checked.reserve(Graph<TV, TE>::vertex_count);
-		dist.reserve(Graph<TV, TE>::vertex_count);
-		parents.reserve(Graph<TV, TE>::vertex_count);
+
+		checked.reserve(Graph<TV, TE>::vertexes.size());
+		dist.reserve(Graph<TV, TE>::vertexes.size());
+		parents.reserve(Graph<TV, TE>::vertexes.size());
 		edges.reserve(Graph<TV, TE>::edge_count);
+
 		for (auto el = Graph<TV, TE>::vertexes.begin(); el != Graph<TV, TE>::vertexes.end(); el++) 
 		{
-			checked[el->second.id] = false;
-			dist[el->second.id] = inf();
-			parents[el->second.id] = 0;
+			checked[el->first] = false;
+			dist[el->first] = inf();
+			parents[el->first] = 0;
 		}
+
 		dist[from] = TE();
 		parents[from] = from;
-		for (size_t i = 0; i < Graph<TV, TE>::vertex_count; ++i) 
+		for (size_t i = 0; i < Graph<TV, TE>::vertexes.size(); ++i)
 		{
 			size_t v = 0;
 			for (auto it = Graph<TV, TE>::vertexes.cbegin(); it != Graph<TV, TE>::vertexes.cend(); it++) 
 			{
-				if (!checked[it->second.id] && (v == 0 || dist[it->second.id] < dist[v])) 
+				if (!checked[it->first] && (v == 0 || dist[it->first] < dist[v]))
 				{
-					v = it->second.id;
+					v = it->first;
 				}
 			}
 			if (dist[v] == inf()) 
@@ -131,7 +137,8 @@ private:
 		return res;
 	}
 public:
-	void UndirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value = TE())
+
+	void erase_edge(size_t from, size_t to, TE _value = TE())
 	{
 		if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end())
 		{
