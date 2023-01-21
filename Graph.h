@@ -274,7 +274,6 @@ void Graph<TV, TE>::erase_vertex(size_t _id) {
 		}
 	}
 }
-
 template <class TV, class TE>
 void Graph<TV, TE>::clear() {
     for (auto it = incidence_list.begin(); it != incidence_list.end(); it++) {
@@ -299,6 +298,13 @@ bool Graph<TV, TE>::is_weighed() const {
 	return weighed;
 }
 
+
+
+
+
+
+
+/*
 template <class TV, class TE>
 class DirectedGraph : public Graph<TV, TE> {
 private:
@@ -405,6 +411,13 @@ public:
 		return bfs(from, to);
 	}
 };
+
+
+
+
+
+
+
 
 template <class TV, class TE>
 class UndirectedGraph : public Graph<TV, TE> {
@@ -603,6 +616,9 @@ public:
 		return path;
 	}
 };
+
+
+
 template <class TV, class TE>
 void UndirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value) {
     if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end()) {
@@ -629,6 +645,10 @@ void UndirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value) {
         }
     }
 }
+
+
+
+
 template <class TV, class TE>
 void DirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value) {
     if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end()) {
@@ -655,4 +675,5 @@ void DirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value) {
         }
     }
 }
+*/
 #endif //GRAPH_H_LAB3_SEM3

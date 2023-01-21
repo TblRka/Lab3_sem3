@@ -71,4 +71,4 @@ struct pair_ord_equal {
 		return false;
 	}
 };
-#endif //PAIR_H_LAB3_SEM3
+#endif
