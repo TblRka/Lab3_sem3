@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "C:\Users\User\source\repos\TblRka\Lab3_sem3_test\DirectedGraph.h"
-#include "C:\Users\User\source\repos\TblRka\Lab3_sem3_test\UndirectedGraph.h"
+//#include "C:\Users\User\source\repos\TblRka\Lab3_sem3_test\DirectedGraph.h"
+//#include "C:\Users\User\source\repos\TblRka\Lab3_sem3_test\UndirectedGraph.h"
+
+#include "D:\Cpp\Sem3\Lab3_sem3_test\DirectedGraph.h"
+#include "D:\Cpp\Sem3\Lab3_sem3_test\UndirectedGraph.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
