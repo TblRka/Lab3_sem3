@@ -142,39 +142,3 @@ public:
 	}
 };
 
-/*
-template <class TV, class TE>
-void DirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value) 
-{
-	if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end()) 
-	{
-		return;
-	}
-	if (Graph<TV, TE>::vertexes.find(to) == Graph<TV, TE>::vertexes.end()) 
-	{
-		return;
-	}
-	for (auto it = Graph<TV, TE>::incidence_list[from].begin(); it != Graph<TV, TE>::incidence_list[from].end(); ) 
-	{
-		if (it->id_from == from && it->id_to == to && it->value == _value) 
-		{
-			it = Graph<TV, TE>::incidence_list[from].erase(it);
-			Graph<TV, TE>::edge_count--;
-		}
-		else 
-		{
-			it++;
-		}
-	}
-	for (auto it = Graph<TV, TE>::incidence_list[to].begin(); it != Graph<TV, TE>::incidence_list[to].end(); ) 
-	{
-		if (it->id_from == from && it->id_to == to && it->value == _value) 
-		{
-			it = Graph<TV, TE>::incidence_list[to].erase(it);
-		}
-		else 
-		{
-			it++;
-		}
-	}
-}*/
