@@ -98,38 +98,83 @@ private:
 		return res;
 	}
 public:
-	void erase_edge(size_t from, size_t to, TE _value = TE());
-	Path min_path(size_t from, size_t to) {
-		if (Graph<TV, TE>::weighed) {
+	void DirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value = TE()) 
+	{
+		if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end()) 
+		{
+			return;
+		}
+		if (Graph<TV, TE>::vertexes.find(to) == Graph<TV, TE>::vertexes.end()) 
+		{
+			return;
+		}
+		for (auto it = Graph<TV, TE>::incidence_list[from].begin(); it != Graph<TV, TE>::incidence_list[from].end(); ) 
+		{
+			if (it->id_from == from && it->id_to == to && it->value == _value) 
+			{
+				it = Graph<TV, TE>::incidence_list[from].erase(it);
+				Graph<TV, TE>::edge_count--;
+			}
+			else 
+			{
+				it++;
+			}
+		}
+		for (auto it = Graph<TV, TE>::incidence_list[to].begin(); it != Graph<TV, TE>::incidence_list[to].end(); ) 
+		{
+			if (it->id_from == from && it->id_to == to && it->value == _value) 
+			{
+				it = Graph<TV, TE>::incidence_list[to].erase(it);
+			}
+			else 
+			{
+				it++;
+			}
+		}
+	}
+	Path min_path(size_t from, size_t to) 
+	{
+		if (Graph<TV, TE>::weighed) 
+		{
 			return dijkstra(from, to);
 		}
 		return bfs(from, to);
 	}
 };
 
+/*
 template <class TV, class TE>
-void DirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value) {
-	if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end()) {
+void DirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value) 
+{
+	if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end()) 
+	{
 		return;
 	}
-	if (Graph<TV, TE>::vertexes.find(to) == Graph<TV, TE>::vertexes.end()) {
+	if (Graph<TV, TE>::vertexes.find(to) == Graph<TV, TE>::vertexes.end()) 
+	{
 		return;
 	}
-	for (auto it = Graph<TV, TE>::incidence_list[from].begin(); it != Graph<TV, TE>::incidence_list[from].end(); ) {
-		if (it->id_from == from && it->id_to == to && it->value == _value) {
+	for (auto it = Graph<TV, TE>::incidence_list[from].begin(); it != Graph<TV, TE>::incidence_list[from].end(); ) 
+	{
+		if (it->id_from == from && it->id_to == to && it->value == _value) 
+		{
 			it = Graph<TV, TE>::incidence_list[from].erase(it);
 			Graph<TV, TE>::edge_count--;
 		}
-		else {
+		else 
+		{
 			it++;
 		}
 	}
-	for (auto it = Graph<TV, TE>::incidence_list[to].begin(); it != Graph<TV, TE>::incidence_list[to].end(); ) {
-		if (it->id_from == from && it->id_to == to && it->value == _value) {
+	for (auto it = Graph<TV, TE>::incidence_list[to].begin(); it != Graph<TV, TE>::incidence_list[to].end(); ) 
+	{
+		if (it->id_from == from && it->id_to == to && it->value == _value) 
+		{
 			it = Graph<TV, TE>::incidence_list[to].erase(it);
 		}
-		else {
+		else 
+		{
 			it++;
 		}
 	}
-}
+}*/

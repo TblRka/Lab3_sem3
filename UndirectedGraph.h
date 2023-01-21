@@ -130,7 +130,7 @@ private:
 		return res;
 	}
 public:
-	void UndirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value)
+	void UndirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value = TE())
 	{
 		if (Graph<TV, TE>::vertexes.find(from) == Graph<TV, TE>::vertexes.end())
 		{
@@ -176,7 +176,7 @@ public:
 };
 
 
-
+/*
 template <class TV, class TE>
 void UndirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value) 
 {
@@ -211,4 +211,4 @@ void UndirectedGraph<TV, TE>::erase_edge(size_t from, size_t to, TE _value)
 			it++;
 		}
 	}
-}
+}*/

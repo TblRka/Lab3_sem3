@@ -22,23 +22,28 @@ protected:
 		size_t id = 0;
 
 		Vertex() {}
+
 		Vertex(size_t _id, const TV& _value) 
 		{
 			value = _value;
 			id = _id;
 		}
+
 		Vertex(const Vertex& another)
 		{
 			value = another.value;
 			id = another.id;
 		}
+
 		Vertex& operator=(const Vertex& another) 
 		{
 			value = another.value;
 			id = another.id;
 			return *this;
 		}
+
 		~Vertex() = default;
+
 		bool operator==(const Vertex& v) 
 		{
 			if (id == v.id && value == v.value)
@@ -47,6 +52,7 @@ protected:
 			}
 			return false;
 		}
+
 		bool operator!=(const Vertex& v) 
 		{
 			return !(*this == v);
@@ -60,18 +66,21 @@ protected:
 		size_t id_to = 0;
 
 		Edge() {}
+
 		Edge(size_t from, size_t to, const TE& _value) 
 		{
 			value = _value;
 			id_from = from;
 			id_to = to;
 		}
+
 		Edge(const Edge& another) 
 		{
 			value = another.value;
 			id_from = another.id_from;
 			id_to = another.id_to;
 		}
+
 		Edge& operator=(const Edge& another) 
 		{
 			value = another.value;
@@ -79,6 +88,7 @@ protected:
 			id_to = another.id_to;
 			return *this;
 		}
+
 		~Edge() = default;
 
 		bool operator==(const Edge& e) 
@@ -89,23 +99,10 @@ protected:
 			}
 			return false;
 		}
+
 		bool operator!=(const Edge& e) 
 		{
 			return !(*this == e);
-		}
-	};
-	struct VertexHash {
-		size_t operator()(const Vertex& vertex) const
-		{
-			std::hash<size_t> hasher;
-			return hasher(vertex.id);
-		}
-	};
-	struct VertexEqual {
-		bool operator()(const Vertex& v1, const Vertex& v2) const 
-		{
-			if (v1.id == v2.id) return true;
-			return false;
 		}
 	};
 
@@ -120,8 +117,8 @@ public:
 	class Path 
 	{
 	private:
+
 		std::list<Edge> seq;
-        size_t _size = 0;
 
 	public:
 		Path() = default;
@@ -129,7 +126,6 @@ public:
 		Path(const Path& another) 
 		{
 			seq = another.seq;
-            _size = another._size;
 		}
 
 		~Path() = default;
@@ -137,34 +133,29 @@ public:
 		Path& operator=(const Path& another) 
 		{
 			seq = another.seq;
-            _size = another._size;
 			return *this;
 		}
 
 		void push_front(const Edge& edge) 
 		{
 			seq.push_front(edge);
-            _size++;
 		}
 
 		void push_front(size_t from, size_t to, TE _value = TE()) 
 		{
 			Edge edge(from, to, _value);
 			seq.push_front(edge);
-            _size++;
 		}
 
 		void push_back(const Edge& edge) 
 		{
 			seq.push_back(edge);
-            _size++;
 		}
 
 		void push_back(size_t from, size_t to, TE _value = TE()) 
 		{
 			Edge edge(from, to, _value);
 			seq.push_back(edge);
-            _size++;
 		}
 
 		void erase(const Edge& edge) 
@@ -181,7 +172,6 @@ public:
 					it++;
 				}
 			}
-            _size--;
 		}
 
         void clear() 
