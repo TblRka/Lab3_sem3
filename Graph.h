@@ -108,7 +108,7 @@ protected:
 
 	std::unordered_map<size_t, std::vector<Edge>> incidence_list;
 	std::unordered_map<size_t, Vertex> vertexes;
-	size_t vertex_count = 0;
+	//size_t vertex_count = 0;
 	size_t edge_count = 0;
 	bool weighed = false;
 
@@ -177,7 +177,6 @@ public:
         void clear() 
 		{
             seq.clear();
-            _size = 0;
         }
 
         Edge operator[](size_t index) 
@@ -194,13 +193,16 @@ public:
 
         bool empty() 
 		{
-            if (_size == 0) return true;
+			if (seq.size())
+			{
+				return true;
+			}
             return false;
         }
 
         size_t size() 
 		{
-            return _size;
+            return seq.size();
         }
 
 		bool operator==(const Path& path) 
@@ -230,17 +232,16 @@ public:
 	};
 	Graph() = default;
 	~Graph() = default;
-	void add_vertex(size_t _id, TV _value = TV());
-	void add_edge(size_t from, size_t to, TE _value = TE());
-	TV& vertex_weight(size_t _id);
 
-	void erase_vertex(size_t _id);
+	void add_vertex(size_t _id, TV _value = TV());//+
+	void add_edge(size_t from, size_t to, TE _value = TE());//+
+	void erase_vertex(size_t _id);//+
+    void clear();//+
 
-    void clear();
+	size_t get_vertex_count() const;//+
+	size_t get_edge_count() const;//+
 
-	size_t get_vertex_count() const;
-	size_t get_edge_count() const;
-	bool is_weighed() const;
+	bool is_weighed() const;//+
 
 };
 
@@ -265,8 +266,9 @@ void Graph<TV, TE>::add_vertex(size_t _id, TV _value)
 	Vertex vertex(_id, _value);
 	incidence_list[_id] = std::vector<Edge>();
 	vertexes[_id] = vertex;
-	vertex_count++;
+	//vertex_count++;
 }
+
 template <class TV, class TE>
 void Graph<TV, TE>::add_edge(size_t from, size_t to, TE _value) 
 {
@@ -288,12 +290,12 @@ void Graph<TV, TE>::add_edge(size_t from, size_t to, TE _value)
 	if (vertexes.find(from) == vertexes.end()) 
 	{
 		vertexes[from] = vf;
-		vertex_count++;
+		//vertex_count++;
  	}
 	if (vertexes.find(to) == vertexes.end()) 
 	{
 		vertexes[to] = vt;
-		vertex_count++;
+		//vertex_count++;
 	}
 	incidence_list[from].push_back(Edge(from, to, _value));
 	if (from != to) 
@@ -306,22 +308,7 @@ void Graph<TV, TE>::add_edge(size_t from, size_t to, TE _value)
 	}
 	edge_count++;
 }
-template <class TV, class TE>
-TV& Graph<TV, TE>::vertex_weight(size_t _id) 
-{
-	if (_id <= 0) 
-	{
-        //throw std::exception("Inappropriate id");
-	}
-	Vertex v(_id, TV());
-	if (vertexes.find(_id) == vertexes.end()) 
-	{
-		vertex_count++;
-		incidence_list[_id] = std::vector<Edge>();
-		vertexes[_id] = v;
-	}
-	return vertexes[_id].value;
-}
+
 template <class TV, class TE>
 void Graph<TV, TE>::erase_vertex(size_t _id) 
 {
@@ -330,9 +317,10 @@ void Graph<TV, TE>::erase_vertex(size_t _id)
 		return;
 	}
 	edge_count -= incidence_list[_id].size();
-	vertex_count--;
+	//vertex_count--;
 	incidence_list.erase(incidence_list.find(_id));
 	vertexes.erase(vertexes.find(_id));
+
 	for (auto elem = incidence_list.begin(); elem != incidence_list.end(); elem++) 
 	{
 		for (auto itv = elem->second.begin(); itv != elem->second.end(); ) 
@@ -348,6 +336,7 @@ void Graph<TV, TE>::erase_vertex(size_t _id)
 		}
 	}
 }
+
 template <class TV, class TE>
 void Graph<TV, TE>::clear() 
 {
@@ -357,20 +346,23 @@ void Graph<TV, TE>::clear()
     }
     incidence_list.clear();
     vertexes.clear();
-    vertex_count = 0;
+    //vertex_count = 0;
     edge_count = 0;
     weighed = false;
 }
+
 template <class TV, class TE>
 size_t Graph<TV, TE>::get_vertex_count() const 
 {
-	return vertex_count;
+	return vertexes.size();
 }
+
 template <class TV, class TE>
 size_t Graph<TV, TE>::get_edge_count() const 
 {
 	return edge_count;
 }
+
 template <class TV, class TE>
 bool Graph<TV, TE>::is_weighed() const 
 {

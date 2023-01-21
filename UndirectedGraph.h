@@ -44,7 +44,8 @@ private:
 		}
 		size_t child = to;
 		size_t cur_parent = parents[child];
-		while (cur_parent != 0) {
+		while (cur_parent != 0) 
+		{
 			for (auto it = Graph<TV, TE>::incidence_list[child].begin(); it != Graph<TV, TE>::incidence_list[child].end(); it++) 
 			{
 				if (cur_parent == it->id_from || cur_parent == it->id_to) 
