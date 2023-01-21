@@ -96,10 +96,12 @@ private:
 					v = it->first;
 				}
 			}
+
 			if (dist[v] == inf()) 
 			{
 				break;
 			}
+
 			checked[v] = true;
 			for (auto it = Graph<TV, TE>::incidence_list[v].cbegin(); it != Graph<TV, TE>::incidence_list[v].cend(); it++) 
 			{
@@ -121,10 +123,12 @@ private:
 				edges[Pair<size_t, size_t>{v, v1}] = len;
 			}
 		}
+
 		if (dist[to] == inf()) 
 		{
 			return res;
 		}
+
 		size_t i = to;
 		size_t p = parents[i];
 		while (p != from) 
@@ -133,6 +137,7 @@ private:
 			i = p;
 			p = parents[i];
 		}
+
 		res.push_front(p, i, edges[Pair<size_t, size_t>{p, i}]);
 		return res;
 	}
@@ -144,10 +149,12 @@ public:
 		{
 			return;
 		}
+
 		if (Graph<TV, TE>::vertexes.find(to) == Graph<TV, TE>::vertexes.end())
 		{
 			return;
 		}
+
 		for (auto it = Graph<TV, TE>::incidence_list[from].begin(); it != Graph<TV, TE>::incidence_list[from].end(); )
 		{
 			if (((it->id_from == from && it->id_to == to) || (it->id_from == to && it->id_to == from)) && it->value == _value)
@@ -160,6 +167,7 @@ public:
 				it++;
 			}
 		}
+
 		for (auto it = Graph<TV, TE>::incidence_list[to].begin(); it != Graph<TV, TE>::incidence_list[to].end(); )
 		{
 			if (((it->id_from == from && it->id_to == to) || (it->id_from == to && it->id_to == from)) && it->value == _value)
