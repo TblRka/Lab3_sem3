@@ -9,8 +9,8 @@ private:
 	{
 		Path path;
 		std::queue<size_t> q;
-		std::unordered_map<size_t, bool> checked(Graph<TV, TE>::vertex_count);
-		std::unordered_map<size_t, size_t> parents(Graph<TV, TE>::vertex_count);
+		std::unordered_map<size_t, bool> checked(Graph<TV, TE>::vertexes.size());
+		std::unordered_map<size_t, size_t> parents(Graph<TV, TE>::vertexes.size());
 		q.push(from);
 		parents[from] = 0;
 		checked[from] = true;
@@ -60,9 +60,9 @@ private:
 		std::unordered_map<size_t, TE> dist;
 		std::unordered_map<size_t, size_t> parents;
 		std::unordered_map<Pair<size_t, size_t>, TE, pair_hash<size_t>, pair_ord_equal<size_t>> edges;
-		checked.reserve(Graph<TV, TE>::vertex_count);
-		dist.reserve(Graph<TV, TE>::vertex_count);
-		parents.reserve(Graph<TV, TE>::vertex_count);
+		checked.reserve(Graph<TV, TE>::vertexes.size());
+		dist.reserve(Graph<TV, TE>::vertexes.size());
+		parents.reserve(Graph<TV, TE>::vertexes.size());
 		edges.reserve(Graph<TV, TE>::edge_count);
 		for (auto el = Graph<TV, TE>::vertexes.begin(); el != Graph<TV, TE>::vertexes.end(); el++) 
 		{
@@ -72,7 +72,7 @@ private:
 		}
 		dist[from] = TE();
 		parents[from] = from;
-		for (size_t i = 0; i < Graph<TV, TE>::vertex_count; ++i) 
+		for (size_t i = 0; i < Graph<TV, TE>::vertexes.size(); ++i)
 		{
 			size_t v = 0;
 			for (auto it = Graph<TV, TE>::vertexes.cbegin(); it != Graph<TV, TE>::vertexes.cend(); it++) 

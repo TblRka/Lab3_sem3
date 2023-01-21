@@ -33,6 +33,50 @@ namespace GraphUnitTest
 
 			Assert::IsTrue((test_graph->is_weighed()) == false, L"Is weighed");
 
+			test_graph->clear();
+
+			for (int i = 1; i < 7; ++i)
+			{
+				test_graph->add_vertex(i);
+			}
+
+			test_graph->add_edge(1, 2, 12);
+			test_graph->add_edge(2, 3, 1);
+			test_graph->add_edge(1, 4, 5);
+			test_graph->add_edge(4, 3, 10);
+			test_graph->add_edge(6, 5, 2);
+			test_graph->add_edge(5, 2, 1);
+			test_graph->add_edge(1, 6, 7);
+
+			Graph<int, int>::Path path;
+			path.push_back(1, 6, 7);
+			path.push_back(6, 5, 2);
+			path.push_back(5, 2, 1);
+			path.push_back(2, 3, 1);
+
+			Assert::IsTrue((test_graph->min_path(1, 3)) == path, L"Dijkstra");
+
+			test_graph->clear();
+
+			for (int i = 1; i < 6; ++i)
+			{
+				test_graph->add_vertex(i);
+			}
+
+			test_graph->add_edge(1, 2);
+			test_graph->add_edge(1, 3);
+			test_graph->add_edge(2, 5);
+			test_graph->add_edge(3, 4);
+			test_graph->add_edge(4, 5);
+			
+
+			Graph<int, int>::Path path1;
+			path1.push_back(1, 2);
+			path1.push_back(2, 5);
+
+			Assert::IsTrue((test_graph->min_path(1, 5)) == path1, L"DFS");
+
+
 
 		}
 

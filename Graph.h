@@ -91,7 +91,7 @@ protected:
 
 		~Edge() = default;
 
-		bool operator==(const Edge& e) 
+		bool operator==(const Edge& e) const
 		{
 			if (value == e.value && id_from == e.id_from && id_to == e.id_to) 
 			{
@@ -100,7 +100,7 @@ protected:
 			return false;
 		}
 
-		bool operator!=(const Edge& e) 
+		bool operator!=(const Edge& e) const 
 		{
 			return !(*this == e);
 		}
