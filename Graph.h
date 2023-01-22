@@ -108,7 +108,6 @@ protected:
 
 	std::unordered_map<size_t, std::vector<Edge>> incidence_list;
 	std::unordered_map<size_t, Vertex> vertexes;
-	//size_t vertex_count = 0;
 	size_t edge_count = 0;
 	bool weighed = false;
 
@@ -266,7 +265,6 @@ void Graph<TV, TE>::add_vertex(size_t _id, TV _value)
 	Vertex vertex(_id, _value);
 	incidence_list[_id] = std::vector<Edge>();
 	vertexes[_id] = vertex;
-	//vertex_count++;
 }
 
 template <class TV, class TE>
@@ -290,12 +288,10 @@ void Graph<TV, TE>::add_edge(size_t from, size_t to, TE _value)
 	if (vertexes.find(from) == vertexes.end()) 
 	{
 		vertexes[from] = vf;
-		//vertex_count++;
  	}
 	if (vertexes.find(to) == vertexes.end()) 
 	{
 		vertexes[to] = vt;
-		//vertex_count++;
 	}
 	incidence_list[from].push_back(Edge(from, to, _value));
 	if (from != to) 
@@ -317,7 +313,6 @@ void Graph<TV, TE>::erase_vertex(size_t _id)
 		return;
 	}
 	edge_count -= incidence_list[_id].size();
-	//vertex_count--;
 	incidence_list.erase(incidence_list.find(_id));
 	vertexes.erase(vertexes.find(_id));
 
@@ -346,7 +341,6 @@ void Graph<TV, TE>::clear()
     }
     incidence_list.clear();
     vertexes.clear();
-    //vertex_count = 0;
     edge_count = 0;
     weighed = false;
 }
