@@ -12,15 +12,4 @@ struct sup
     }
 };
 
-template<>
-struct sup<std::string> 
-{
-    std::string operator() () 
-    {
-        std::string s = "~~~~~~";
-        return s;
-    }
-};
-
-
 #endif // SUP_H

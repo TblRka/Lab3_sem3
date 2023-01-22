@@ -9,12 +9,11 @@
 #include <stack>
 #include <unordered_map>
 #include "Pair.h"
-#include "sup.h"
+#include "Sup.h"
 
 template <class TV, class TE>
 class Graph 
 {
-    //friend class MainWindow;
 protected:
 	struct Vertex 
 	{

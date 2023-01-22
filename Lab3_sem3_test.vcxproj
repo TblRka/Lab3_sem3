@@ -130,7 +130,7 @@
     <ClInclude Include="DirectedGraph.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Pair.h" />
-    <ClInclude Include="sup.h" />
+    <ClInclude Include="Sup.h" />
     <ClInclude Include="UndirectedGraph.h" />
   </ItemGroup>
   <ItemGroup>

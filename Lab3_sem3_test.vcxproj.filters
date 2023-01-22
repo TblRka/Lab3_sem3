@@ -21,7 +21,7 @@
     <ClInclude Include="Pair.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="sup.h">
+    <ClInclude Include="Sup.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="DirectedGraph.h">
